@@ -1,2 +1,4 @@
 # ping_u
-"Programierung für Ingenieurung 2017"
+"Programmieren für Ingenieure 2017"
+
+morse/ simple morse code example for arduino
