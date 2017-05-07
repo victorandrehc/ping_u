@@ -1,8 +1,8 @@
 # ping_u
 "Programmieren für Ingenieure 2017"
 
-morse/ simple morse code example for arduino
-
+mymorse/ simple morse code example for arduino
+assignment1/ folder with 1st exercises
 
 
 Members:
