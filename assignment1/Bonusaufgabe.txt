@@ -1,0 +1,2 @@
+Man könnte das Vorhaben eleganter umsetzen, fall man immer eine gute Vertiefung macht.
+Z.b wenn man eine Methode, um Variablen zu benennen.

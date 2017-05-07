@@ -1,0 +1,11 @@
+
+
+a)
+	Fehlermeldungen passiert beim Übersetzen dieses Programms, weil es viele Syntax-Fehler gibt.
+	Z.b die setup funktion hat keine "()". Das Programms hat auch eine Logikfehler in der blink_if_even Funktion.
+b)
+	Es gibt Fehlermeldungen und diese bedutet dass es Syntax-Fehlen gibt.
+c)
+	Es gibt Fehlermeldungen.
+
+ 
