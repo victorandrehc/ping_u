@@ -107,32 +107,17 @@ void morse_number(int n) {
     if (n >= 10) {
         morse_number(n / 10);
     }
-    morse_digit(n % 10);
+    morse_digit_even(n % 10); //changed
 
     Serial.print("morse_number(");
     Serial.print(n);
     Serial.println(")...done");
 }
 
-void morse_binary_representation_of_number(int n) {
-  Serial.print("morse_binary_representation_of_number(");
-  Serial.print(n);
-  Serial.println(")...");
-  if (n%2==0 ) {  //odd or even
-    if (n/2>0) { //stop if n<2
-        morse_binary_representation_of_number(n/2);
-      }
-      dit(); 
-  }else{
-    if ((n-1)/2>0) { //stop if n<2
-        morse_binary_representation_of_number((n-1)/2);
-    }
-    dah();
+void morse_digit_even(int n) {
+  if (n%2==0) {
+    morse_digit(n);
   }
-  pause_letter();
-  Serial.print("morse_binary_representation_of_number(");
-  Serial.print(n);
-  Serial.println(")...done");
 }
 
 void setup() {
@@ -148,6 +133,6 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly: 
   morse_SOS();  
-  morse_number(5024);
-  morse_binary_representation_of_number(5024);
+  morse_number(876543210);
 }
+
