@@ -6,4 +6,5 @@ assignment1/ folder with 1st exercises
 
 
 Members:
-  Victor A. H. Costa-2567315
+  Victor	-2567315
+  Marco		-2554643
