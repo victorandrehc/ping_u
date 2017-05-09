@@ -6,6 +6,6 @@ assignment1/ folder with 1st exercises
 
 
 Members:
-  Victor	-2567315
+  Victor	-2567375
   Marco		-2554643
   Jannis	-2555689
