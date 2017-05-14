@@ -45,16 +45,18 @@ void loop() {
   Serial.println(state);
   Serial.print("BEWEGUNG?: ");
   Serial.println(bewegung);
+  Serial.print("delta t: ");
+  Serial.println(deltat());
+  Serial.println("\n");
   switch (state){
     case 1:
       grun_h();
       rot_n();
-      if (bewegung==1 || digitalRead(bewegung_sensor)==HIGH){
+      update_bewegung();
+      if (bewegung==1){
         state=2;
         bewegung=0;
         t=millis();
-      }else{
-        state=1;
       }
       break;
 
@@ -62,8 +64,6 @@ void loop() {
       gelb_h();
       if (deltat()>=1000){
         state=3;
-      }else{
-        state=2;
       }
       break;
 
@@ -71,8 +71,6 @@ void loop() {
       rot_h();
       if(deltat()>=2000){
         state=4;
-      }else{
-        state=3;
       }
       break;
 
@@ -175,20 +173,4 @@ void update_bewegung(){
   }
   
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
