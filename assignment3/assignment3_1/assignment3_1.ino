@@ -128,23 +128,3 @@ void loop() {
 unsigned long deltat(){
   return millis()-t;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
