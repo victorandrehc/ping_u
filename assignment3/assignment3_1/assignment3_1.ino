@@ -1,6 +1,7 @@
 const unsigned long t_measuring=30000;
 const unsigned long t_debounce=50;
-const int measures_len=3000;
+const unsigned long interval=10;
+const int measures_len=(int)(t_measuring/interval); //3000;
 const int unmeasured=-1;
 
 const int light_sensor= A0;
@@ -127,6 +128,8 @@ void loop() {
 unsigned long deltat(){
   return millis()-t;
 }
+
+
 
 
 
