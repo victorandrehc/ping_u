@@ -46,6 +46,7 @@ void loop(){
 	while(counter < runde && counter < 100){
 		switch(state){
 		case 0:
+		t = millis();
 		if (digitalRead(buttonblau)== HIGH)
 		{
 		 if (delta()>=50 && digitalRead(buttonblau) == LOW)
