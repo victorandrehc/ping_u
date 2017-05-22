@@ -8,7 +8,7 @@ int ledrot=9;
 int ledgruen=10;
 int ledgelb=11;
 
-int lautsprecher=2;
+int lautsprecher=3;
 
 unsigned long t=0;
 int abspielenUser=750;
@@ -183,12 +183,6 @@ void loop(){
 		}
 	}
 	runde++;
-	initial();
-}
-
-void initial(){
-	speicher[100] = {0};
-	counter = 0;
 	state = 0;
 }
 
