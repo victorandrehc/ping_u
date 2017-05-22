@@ -18,6 +18,7 @@ int speicher[100] = {0};
 int counter=0;
 int countersequence=0;
 int state = 0;
+int led = 0;
 
 int blaupushed=0;
 int rotpushed=0;
@@ -43,45 +44,64 @@ void setup(){
 }
 
 void loop(){
-		switch(state){
+  switch(state){
+     case 0:
+       if(digitalRead(buttonblau)==HIGH){
+         Serial.println("Blau gepushed!");
+         speicher[counter] = 1;
+         state = 1;
+         led = 1;
+       }else if (digitalRead(buttonrot)==HIGH){
+         Serial.println("Rot gepushed!");
+         speicher[counter] = 2;
+         state = 1;
+         led = 2;
+       }else if (digitalRead(buttongruen)==HIGH){
+         Serial.println("Gruen gepushed!");
+         speicher[counter] = 3;
+         state = 1;
+         led = 3;
+       else if (digitalRead(buttongelb)==HIGH){
+         Serial.println("Rot gepushed!");
+         speicher[counter] = 4;
+         state = 1; 
+         led = 4;
+       }
+       break;
+     case 1:
+       t = millis();
+  
+  	switch(state){
 		case 0:
 		t = millis();
 		if (digitalRead(buttonblau)== HIGH)
 		{
-		 if (delta()>=50 && digitalRead(buttonblau) == LOW)
-		 {
 		 	Serial.println("Blau gepushed!");
 		 	speicher[counter] = 1;
 		 	t = millis();
 			state = 1;
-		 }
 		}else if (digitalRead(buttonrot) == HIGH)
 		{
-		 if (delta()>=50 && digitalRead(buttonrot) == LOW)
-		 {
 		 	Serial.println("Rot gepushed!");
 		 	speicher[counter] = 2;
 			t = millis();
 			state = 2;
-		 }
 		}else if (digitalRead(buttongruen) == HIGH)
 		{	
-		 if (delta()>=50 && digitalRead(buttongruen) == LOW)
-		 {
+		
 		 	Serial.println("Gruen gepushed!");
 		 	speicher[counter] = 3;
 			t = millis();
 			state = 3;
-		 }
+		 
 		}else if (digitalRead(buttongelb) == HIGH)
 		{
-		 if (delta()>=50 && digitalRead(buttongelb) == LOW)
-		 {
+	
 		 	Serial.println("Gelb gepushed!");
 		 	speicher[counter] = 4;
 			t = millis();
 			state= 4;
-		 }
+
 		}
 		break;
 		case 1:
@@ -92,7 +112,7 @@ void loop(){
 		 }else{
 		 	digitalWrite(ledblau, LOW);
 		 	noTone(lautsprecher);
-		 	state = 0;
+		 	state = 5;
 		 }
 		break;
 		case 2:
@@ -103,7 +123,7 @@ void loop(){
 		 }else{
 		 	digitalWrite(ledrot, LOW);
 		 	noTone(lautsprecher);
-		 	state = 0;
+		 	state = 5;
 		 }
 		break;
 		case 3:
@@ -114,7 +134,7 @@ void loop(){
 		 }else{
 		 	digitalWrite(ledgruen, LOW);
 		 	noTone(lautsprecher);
-		 	state = 0;
+		 	state = 5;
 		 }
 		break;
 		case 4:
@@ -125,13 +145,14 @@ void loop(){
 		 }else{
 		 	digitalWrite(ledgelb, LOW);
 		 	noTone(lautsprecher);
-		 	state = 0;
+		 	state = 5;
 		 }
 		break;
 		default:
 		break;
 	}
-	counter++;
+        if(state == 5){
+         counter++;
 	if (counter >99){
 		while(1){
 			Serial.println("Speicherueberlauf!");
@@ -183,10 +204,13 @@ void loop(){
 				 	noTone(lautsprecher);
 				 }
 			break;
+                        
 		}
+                countersequence++;
 	}
 	countersequence = 0;
 	state = 0;
+        }
 }
 
 unsigned long delta(){
