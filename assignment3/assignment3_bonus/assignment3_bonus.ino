@@ -14,7 +14,8 @@ unsigned long t=0;
 int abspielenUser=750;
 int abspielenArduino=500;
 
-int speicher[100] = {0};
+int speicher[25] = {0};
+int speicherbegin=0;
 int counter=0;
 int countersequence=0;
 int state = 0;
@@ -132,14 +133,13 @@ void loop(){
 		break;
 	}
 	counter++;
-	if (counter >99){
-		while(1){
-			Serial.println("Speicherueberlauf!");
-			delay(500);
-		}
+	if (counter > 24)
+	{
+		counter = 0;
+		speicherbegin = (speicherbegin + 1)%25;
 	}
-	while(countersequence < counter && counter < 100){
-		switch(speicher[countersequence]){
+	while(countersequence < counter){
+		switch(speicher[(speicherbegin+countersequence)%25]){
 			case 0:
 				state = 0;
 			break;
