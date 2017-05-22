@@ -17,6 +17,7 @@ int abspielenArduino=500;
 int speicher[100] = {0};
 int runde=1;
 int counter=0;
+int countersequence=0;
 int state = 0;
 
 int blaupushed=0;
@@ -43,7 +44,6 @@ void setup(){
 }
 
 void loop(){
-	while(counter < runde && counter < 100){
 		switch(state){
 		case 0:
 		t = millis();
@@ -133,9 +133,13 @@ void loop(){
 		break;
 	}
 	counter++;
+	if (counter >99){
+		while(1){
+			Serial.println("Speicherueberlauf!");
+			delay(500);
+		}
 	}
-	counter=0;
-	while(counter < runde && counter < 100){
+	while(countersequence < runde && counter < 100){
 		switch(speicher[counter]){
 			case 0:
 				state = 0;
@@ -182,6 +186,7 @@ void loop(){
 			break;
 		}
 	}
+	countersequence = 0;
 	runde++;
 	state = 0;
 }
