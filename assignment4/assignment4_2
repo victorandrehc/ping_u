@@ -39,7 +39,7 @@ void loop () {
 
 2.3)
 a)Das Programm wird nicht übersetzt
-b) 
+b) /
 c)
 int led = 3;
 int naechsterWechsel = 0;
