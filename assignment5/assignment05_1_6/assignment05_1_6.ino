@@ -184,6 +184,7 @@ void loop() {
         if(is_right_button_pressed==LOW){
           state=10;
           add(output,input_1,input_2,SIZE);
+          Serial.println("OUTPUT");
           print_array(output,SIZE);
         }
         break;
@@ -239,6 +240,8 @@ void print_array(int* arr,int size){
 unsigned long deltat(){
   return millis()-t;
 }
+
+
 
 
 
