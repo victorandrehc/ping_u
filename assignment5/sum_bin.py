@@ -15,6 +15,7 @@ def sum_bin(a,b):
 	return (result,aux)
 
 a=[0,0,0,1,1,1]
+#  0,1,2,3,4,5
 b=[0,0,0,0,1,1]
 
 print sum_bin(a,b)
