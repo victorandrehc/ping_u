@@ -1,13 +1,15 @@
 const int SIZE=6;
 const unsigned long t_debounce=50;
+const unsigned long t_fast_counter=500;
 const int button_left=23;
 const int button_right=25;
 
 const int LED[SIZE]={7,6,5,4,3,2};
 
 unsigned long t=0;
+int fast_counter=0;
 
-int input_1[SIZE],input_2[SIZE],output[SIZE],ONE[SIZE]={0,0,0,0,0,1},ZERO[SIZE]={0,0,0,0,0,0};
+int input_1[SIZE],input_2[SIZE],output[SIZE],ONE[SIZE]={0,0,0,0,0,1},ZERO[SIZE]={0,0,0,0,0,0},TEN[SIZE]={0,0,1,0,1,0};
 unsigned int state=0;
 
 int is_left_button_pressed=LOW;
@@ -42,19 +44,12 @@ void loop() {
         if(is_left_button_pressed==HIGH){
           t=millis();
           state=1;
-          int input_1_copy[SIZE];
-          for(int i=0;i<SIZE;i++){
-            input_1_copy[i]=input_1[i];
-          }
-          add(input_1,input_1_copy,ONE,SIZE);
         }else if(is_right_button_pressed==HIGH){
           t=millis();
           state=3;
         } 
         break;
       case 1:
-        Serial.println("INPUT1");
-        print_array(input_1,SIZE);
         if(deltat()>=t_debounce ){
           state=2;
         }
@@ -63,9 +58,47 @@ void loop() {
         is_left_button_pressed=digitalRead(button_left);
         if(is_left_button_pressed==LOW){
           state=0;
+          int input_1_copy[SIZE];
+          for(int i=0;i<SIZE;i++){
+            input_1_copy[i]=input_1[i];
+          }
+          add(input_1,input_1_copy,ONE,SIZE);
+          Serial.println("INPUT1");
+          print_array(input_1,SIZE);
+        }else if(deltat()>=t_fast_counter){
+          state=13;
+          t=millis();
+          fast_counter=0;
         }
         break;
+       case 13:
+        if(deltat()>=10){
+          state=14;
+          fast_counter++;
+        }else if(digitalRead(button_left)==LOW){
+          state=0;
+          print_array(input_1,SIZE);
 
+        }
+        break;
+       case 14:
+         if(fast_counter>=10){
+          int input_1_copy[SIZE];
+          for(int i=0;i<SIZE;i++){
+              input_1_copy[i]=input_1[i];
+          }
+          add(input_1,input_1_copy,TEN,SIZE);
+          fast_counter=0;
+        }
+        
+        Serial.println("INPUT1");
+        print_array(input_1,SIZE);
+        if(digitalRead(button_left)==LOW){
+          state=0;
+        }else{
+          state=13;
+        }
+        break;
        case 3:
         if(deltat()>=t_debounce){
           state=4;
@@ -85,19 +118,12 @@ void loop() {
         if(is_left_button_pressed==HIGH){
           t=millis();
           state=6;
-          int input_2_copy[SIZE];
-          for(int i=0;i<SIZE;i++){
-            input_2_copy[i]=input_2[i];
-          }
-          add(input_2,input_2_copy,ONE,SIZE);
         }else if(is_right_button_pressed==HIGH){
           t=millis();
           state=8;
         } 
         break;
       case 6:
-        Serial.println("INPUT2");
-        print_array(input_2,SIZE);
         if(deltat()>=t_debounce){
           state=7;
         }
@@ -106,6 +132,45 @@ void loop() {
         is_left_button_pressed=digitalRead(button_left);
         if(is_left_button_pressed==LOW){
           state=5;
+          int input_2_copy[SIZE];
+          for(int i=0;i<SIZE;i++){
+            input_2_copy[i]=input_2[i];
+          }
+          add(input_2,input_2_copy,ONE,SIZE);
+          Serial.println("INPUT2");
+          print_array(input_2,SIZE);
+        }else if(deltat()>=t_fast_counter){
+          state=15;
+          t=millis();
+          fast_counter=0;
+        }
+        break;
+       case 15:
+        if(deltat()>=10){
+          state=16;
+          fast_counter++;
+        }else if(digitalRead(button_left)==LOW){
+          state=5;
+          print_array(input_2,SIZE);
+
+        }
+        break;
+       case 16:
+         if(fast_counter>=10){
+          int input_2_copy[SIZE];
+          for(int i=0;i<SIZE;i++){
+              input_2_copy[i]=input_2[i];
+          }
+          add(input_2,input_2_copy,TEN,SIZE);
+          fast_counter=0;
+        }
+        
+        Serial.println("INPUT2");
+        print_array(input_2,SIZE);
+        if(digitalRead(button_left)==LOW){
+          state=5;
+        }else{
+          state=15;
         }
         break;
 
@@ -174,6 +239,22 @@ void print_array(int* arr,int size){
 unsigned long deltat(){
   return millis()-t;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
