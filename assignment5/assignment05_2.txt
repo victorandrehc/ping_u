@@ -1,14 +1,14 @@
 Listing 1:
-  12 wird von "Serial.print()" ausgegeben, weil im Stantard des C das innerste Scope immer zuerst angesehen ist. An dieses Beispiel ist "int x=12" das innerste Scope.
+  	12 wird von "Serial.print()" ausgegeben, weil in C der innerste Scope immer zuerst betrachtet wird. In dieses Beispiel steht "int x=12" im innersten	 Scope.
 
 Listing 2:
-	12 wird von Serial.print() ausgegeben, weil nachdem die globale Variable "x" mit 12 aktualisiert worden ist, wird "Serial.print()" gerufen.
+	12 wird von Serial.print() ausgegeben, da "Serial.print()" erst aufgerufen wird, nachdem die globale Variable "x" mit 12 aktualisiert wurde.
 
 Listing 3:
-  7 wird von "Serial.print()" ausgegeben, weil im Stantard des C das innerste Scope immer zuerst angesehen ist. An dieses Beispiel ist das Scope der "int x=12" Befehl schon geschlossen.
+  	7 wird von "Serial.print()" ausgegeben, weil in C der innerste Scope immer zuerst betrachtet wird. In diesem Beispiel ist der Scope mit der Anweisung "int x=12" schon geschlossen.
 
 Listing 4:
-	7 wird von "Serial.print()" ausgegeben, weil im Stantard des C das innerste Scope immer zuerst angesehen ist. An dieses Beispiel ist das Scope der "int x=newX" Befehl schon geschlossen wegen das geschlossene Funktion.
+	7 wird von "Serial.print()" ausgegeben, weil in C der innerste Scope immer zuerst betrachtet wird. In diesem Beispiel ist der Scope mit der Anweisung "int x=newX" schon durch die Funktion geschlossen.
 
 Listing 5:
-	12 wird von Serial.print() ausgegeben, weil nachdem die globale Variable "x" mit 12 aktualisiert worden ist, wird "Serial.print()" gerufen.	
+	12 wird von Serial.print() ausgegeben, da "Serial.print()" erst aufgerufen wird, nachdem die globale Variable "x" mit 12 aktualisiert wurde.	
