@@ -4,7 +4,7 @@ const int echo_pin=33;
 const int button_pin=3;
 const unsigned long t_debounce=100;
 
-unsigned long sonar_timeout=1000;
+unsigned long sonar_timeout=90*1000;
 
 unsigned long sample_time_ms=100;
 unsigned long measure_time_ms=30000;
@@ -162,6 +162,7 @@ void copy(long unsigned int a[], long unsigned int b[], int begin, int end) {
  for (int k = begin; k < end; k++)
  a[k] = b[k];
 } 
+
 
 
 
