@@ -1,7 +1,13 @@
 /*
-Der Durchschnitt des Arrays und der Median sind unterschiedlich, weil sie sind unterschiedliche 
-Vorstellung der Mathemathik. Der Median ist der Wert der Mittelpunkt des Arrays  und 
-der Durchschnitt ist die Summe der Werte eingetellt nach Grosse des Arrays.  
+Der Durchschnitt des Arrays und der Median können unterschiedlich sein, da
+sie unterschiedliche Herangehensweisen zur Bestimmung von Mittelwerten datellen.
+Der Median beschreibt den Wert, der nach
+den Messungen und sortierten Auflistung an der mittleren Stelle steht (wobei es
+praktisch wäre eine ungerade Anzahl an Messungen zu haben, da dann eine Messung
+immer an mittlerer Stelle steht).
+Beim Durchschnittlichen Wert wird nicht das Ergebnis einer Messung genommen,
+sondern das Ergebniss von allen Messungen betrachtet und durch die Anzahl an Messungen
+geteilt.
 
 */
 

@@ -19,18 +19,6 @@ unsigned long test_merge_sort(int test_array[], int size){
   return r;
 }
 
-float median(int* a, int size){
-  int b[size];
-  merge_sort(a,b,size);
-  if(size%2!=0){
-    return a[size/2];
-  }else{
-    Serial.println(a[size/2]);
-    Serial.println(a[size/2]-1);
-    return (a[size/2]+a[size/2-1])/2.0;
-  }
-}
-
 void merge_sort(int a[], int b[], int size)
 {
  partial_merge_sort(a, b, 0, size);
