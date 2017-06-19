@@ -10,7 +10,7 @@ void setup(){
 }
 
 void loop(){
-	
+
 }
 
 2.2)
@@ -22,7 +22,7 @@ int led = 3;
 int tasterGedrueckt = 0;
 int zaehler = 0;
 void setup(){
-  
+
 }
 
 void loop () {
@@ -74,7 +74,7 @@ void loop () {
 
 2.5)
 a)Das Programm wird übersetzt wenn man eine leere loopmethode einfügt.
-b)Nein macht es nicht, weil so nur led 7 und 8 als OUTPUT gepinnt werden, denn die while schleife überprüft auf kleiner 9. 
+b)Nein macht es nicht, weil so nur led 7 und 8 als OUTPUT gepinnt werden, denn die while schleife überprüft auf kleiner 9.
 c)
 int led[] = {7, 8, 9};
 void setup (){
@@ -85,6 +85,5 @@ void setup (){
 }
 
 void loop(){
-  
-}
 
+}
