@@ -104,3 +104,20 @@ void print_pre_order(Node *root){
   print_pre_order(root->left);
   print_pre_order(root->right);
 }
+
+Node *find_node(Node *root,int element){
+  Serial.println("Finding Node");
+  while ( root != NULL ) {
+    if ( element < root->value ) {
+      root = root->left ;
+    }
+    else if ( element > root->value ) {
+      root = root->right ;
+    }
+    else { // element == root - > value ;
+      return root ;
+    }
+  }
+  Serial.println("Nothing Found");
+  return NULL;
+}
