@@ -1,0 +1,10 @@
+2.5
+a)
+Insertionsort ist schneller da es direkt über das Array 
+läuft ohne sortieren zu müssen und Mergesort trotzdem die
+Merge-Operationen ausführen muss.
+b)
+Merge-Sort ist schneller da die Laufzeit bei Mergesort nur bedingt von 
+dem Sortiertheits-Grad abhängt während Insertionsort bei
+jedem neuen unsortierten Element über alle vorherigen
+Elemente iterieren muss.
